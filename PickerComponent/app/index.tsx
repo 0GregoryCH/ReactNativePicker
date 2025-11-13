@@ -10,7 +10,8 @@ import { estilosGlobales } from '@/styles/estilosGlobales';
 import ThemaText from '@/Components/ThemaText';
 
 const PickerScreen = () => {
-  const { control, handleSubmit, selectedValue } = usePickerForm();
+  //se usa el hook personalizado para el formulario (todo lo que se va a usar)
+  const { control, handleSubmit, selectedValue, selectedFramework } = usePickerForm();
 
   return (
     <View style={estilosGlobales.background}>
@@ -28,9 +29,21 @@ const PickerScreen = () => {
         label="Selecciona tu lenguaje:"
       />
 
+       {/* Picker de Framework con modo dropdown */}
+      <CustomPicker 
+        control={control}
+        name="selectedFramework"
+        label="Selecciona tu framework:"
+        mode="dropdown" 
+      />
+
       {/* Valor seleccionado */}
       <Text style={estilosGlobales.selectedValueText}>
         Valor seleccionado: {selectedValue}
+      </Text>
+
+       <Text style={estilosGlobales.selectedValueText}>
+        Framework: {selectedFramework}
       </Text>
 
       {/* Botón de envío */}
